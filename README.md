@@ -12,3 +12,7 @@ How to use:
 
 Clone repo > run "docker build -t batch_closing_script_container ."
 Then run sudo docker run -d -p 5004:5004 --restart always -v /var/log/batch_closing_script_logs:/var/log/batch_closing_script_logs --name batch_closing_script_container <imgID>
+
+
+
+p.s this code is only relevant to my current position and will not work for everyone, this repo is just to document my work.
