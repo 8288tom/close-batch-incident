@@ -10,17 +10,14 @@ pd_token = creds.pd_cred.get("Authorization")
 def match_incident_to_batch():
     # Fetch the list of open incidents and batches
     list_of_incidents = get_open_batch_incidents()
-    print(f"List of open incidents: {list_of_incidents}")
     list_of_batches = get_batches()
-    print(f"List of unarchived batches: {list_of_batches}")
     sleep(5)
 
     for incident in list_of_incidents:
         incident_id = incident["id"]
         file_name = incident["file_name"]
         incident_resolved = incident["status"] == "resolved"
-        print("This is the incident inside the loop: ", incident)
-
+        
         if incident_resolved:
             # Skip resolved incidents
             print("Incident already resolved: ", incident_id, file_name)
@@ -30,7 +27,6 @@ def match_incident_to_batch():
         batch_id = ""  # Default value for batch ID
 
         for batch in list_of_batches:
-            print("This is the batch inside the loop: ", batch)
             if incident["file_name"] == batch["file_name"]:
                 # Match found, close the incident and write resolution note
                 batch_id = batch["batch_id"]
